@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 
 # Install Apache, zip, and unzip
-RUN sudo apt-get update && apt-get install -y apache2 zip unzip
+RUN apt-get update && apt-get install -y apache2 zip unzip
 
 # Download and extract the ZIP file
 ADD https://www.free-css.com/assets/files/free-css-templates/download/page254/photogenic.zip /var/www/html/
