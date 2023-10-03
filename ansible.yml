@@ -1,20 +1,11 @@
 - hosts: all
   become: true
-  tasks:
-    - name: Delete old deployment
-      command: kubectl delete -f /home/ubuntu/Deployment.yml
-      ignore_errors: yes  # Ignore errors if the resource doesn't exist
-
-    - name: Delete old service
-      command: kubectl delete -f /home/ubuntu/Service.yml
-      ignore_errors: yes  # Ignore errors if the resource doesn't exist
-
-    - name: Create new deployment
-      command: kubectl apply -f /home/ubuntu/Deployment.yml
-      async: 600  # Set a reasonable timeout for the task to complete
-      poll: 0     # Do not wait for the task to complete
-
-    - name: Create new service
-      command: kubectl apply -f /home/ubuntu/Service.yml
-      async: 600  # Set a reasonable timeout for the task to complete
-      poll: 0     # Do not wait for the task to complete
+  tasks: 
+     - name: delete old deployment
+       command: kubectl delete -f /home/ubuntu/Deployment.yml
+     - name: delete old service
+       command: kubectl delete -f /home/ubuntu/Service.yml
+     - name: create new deployment
+       command: kubectl apply -f /home/ubuntu/Deployment.yml
+     - name: create new service
+       command: kubectl apply -f /home/ubuntu/Service.yml
